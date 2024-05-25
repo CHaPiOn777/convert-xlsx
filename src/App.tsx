@@ -6,8 +6,9 @@ import { FormEvent, useEffect, useState } from "react";
 import Input from "./Components/Input";
 import { ModalCustom } from "./Components/Modal";
 import { readFile } from "./api/readFileFromUrl";
-// import https from "https";
-// import fs from "fs";
+// import { getValues } from "./api/getDataXlsx";
+// https://docs.google.com/spreadsheets/d/1JoLAETB4v7Qo5FSnSXzKjFAnSflFo456/edit?usp=drive_link
+// https://docs.google.com/document/d/1HW2UK2nPiWZdKsDcsiFZsWLhGTDuGt6e/edit?usp=drive_link
 
 function App() {
   const [googleSheetsLink, setGoogleSheetsLink] = useState<string>("");
@@ -20,8 +21,9 @@ function App() {
   };
 
   const onClickPreview = () => {
-    setModalShow(true);
+    // setModalShow(true);
     readFile(googleDocsLink);
+    // getValues(googleSheetsLink, "R1C1");
   };
   return (
     <Container
