@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/convert-xlsx/static/css/main.db62923b.css",
+    "main.js": "/convert-xlsx/static/js/main.7bae5c78.js",
+    "index.html": "/convert-xlsx/index.html",
+    "main.db62923b.css.map": "/convert-xlsx/static/css/main.db62923b.css.map",
+    "main.7bae5c78.js.map": "/convert-xlsx/static/js/main.7bae5c78.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.db62923b.css",
+    "static/js/main.7bae5c78.js"
+  ]
+}
