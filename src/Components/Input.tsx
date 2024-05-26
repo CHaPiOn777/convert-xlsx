@@ -1,9 +1,9 @@
-import React, { FC } from "react";
+import React, { ChangeEvent, FC, FormEvent } from "react";
 import { Form } from "react-bootstrap";
 
 type TInputProps = {
-  value: string;
-  onChange: (value: string) => void;
+  value?: string;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   label: string;
   placeholder: string;
   type: string;
@@ -25,7 +25,7 @@ const Input: FC<TInputProps> = ({
         type={type}
         placeholder={placeholder}
         value={value}
-        onChange={(e) => onChange(e.target.value)}
+        onChange={onChange}
       />
     </Form.Group>
   );

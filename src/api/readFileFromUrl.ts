@@ -1,4 +1,7 @@
-const readFileFromUrl = async (url: string) => {
+import React from "react";
+import { replacePlaceholders } from "../utils/replacePlaceholders";
+
+export const readFileFromUrl = async (url: string) => {
   try {
     const response = await fetch(url);
     const blob = await response.blob();
@@ -28,15 +31,21 @@ const extractDataFromHTML = (htmlContent: string) => {
   return { description };
 };
 
-export const readFile = (url: string) => {
-  readFileFromUrl(url)
-    .then((content) => {
-      const { description } = extractDataFromHTML(content as string);
-      const dataInCurlyBraces = description?.match(/\{[^}]+\}/g);
-      return console.log(dataInCurlyBraces);
-      // Дальнейшая обработка содержимого файла
-    })
-    .catch((error) => {
-      console.error("Ошибка:", error);
-    });
+export const readFile = async (url: string, replacements?: string[]) => {
+  try {
+    const content = await readFileFromUrl(url);
+    const { description } = extractDataFromHTML(content as string);
+    const dataIsMatch = description
+      ?.match(/\{[^}]+\}/g)
+      ?.map((item) => item.slice(1, -1).split("-"));
+    if (replacements && description) {
+      const updatedText = replacePlaceholders(description, replacements);
+      return updatedText.split("\u000b");
+    }
+    return dataIsMatch;
+  } catch (error) {
+    console.error("Ошибка:", error);
+  }
 };
+export const file = async (url: string) =>
+  await (await fetch(url)).arrayBuffer();
